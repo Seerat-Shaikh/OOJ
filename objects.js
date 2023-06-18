@@ -36,10 +36,26 @@ class User {
         return this;
     }
 }
+ // === Class Inheritance ===
+class Admin extends User {
+    deleteUser(user){
+        users = users.filter(u => {
+            return u.email != user.email;
+        })
+    }
+}
 
 var userOne = new User('mario@ninjas.com', 'Mario');
 var userTwo= new User('yoshi@ninjas.com', 'Yoshi');
+var admin = new Admin('shaun@ninjas.com', 'shaun');
+
+var users = [userOne, userTwo, admin];
+
+admin.deleteUser(userOne);
+
+console.log(users);
 
 //userOne.login();
 //userTwo.logout();
-userOne.login().updateScore().updateScore().logout();
+// ===== Chaining ====
+//userOne.login().updateScore().updateScore().logout();
